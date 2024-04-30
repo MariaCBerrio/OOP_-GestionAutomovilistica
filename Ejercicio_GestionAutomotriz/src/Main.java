@@ -66,11 +66,10 @@ public class Main {
             System.out.println("-------Menú de opciones-------");
             System.out.println("1.Encender o apagar vehículo");
             System.out.println("2.Mostrar información del vehículo");
-            System.out.println("3.Arrancar el vehículo");
-            System.out.println("4.Acelerar el vehículo");
-            System.out.println("5.Frenar el vehículo");
-            System.out.println("6.Conocer el estado del movimiento del vehículo");
-            System.out.println("7.Salir");
+            System.out.println("3.Acelerar el vehículo");
+            System.out.println("4.Frenar el vehículo");
+            System.out.println("5.Conocer el estado del movimiento del vehículo");
+            System.out.println("6.Salir");
             resp4 = input.nextInt();
 
            switch (resp4) {
@@ -82,31 +81,28 @@ public class Main {
                    System.out.println(resp3.toString());
                    System.out.println(" ");
                    continue;
+
                case 3:
-                   System.out.println(resp3.arrancar());
-                   System.out.println(" ");
-                   continue;
-               case 4:
                    System.out.println("¿Cuánto desea acelerar?");
                    velocidad = input.nextFloat();
                    System.out.println(resp3.acelerar(velocidad));
                    System.out.println(" ");
                    continue;
-               case 5:
-                   System.out.println(resp3.frenar());
+               case 4:
+                   resp3.frenar();
                    System.out.println(" ");
                    continue;
-               case 6:
+               case 5:
                    System.out.println(resp3.obtenerEstado());
                    System.out.println(" ");
                    continue;
-               case 7:
+               case 6:
                    System.out.println("¡Hasta la próxima!");
                    break;
                default:
                    System.out.println("Por favor seleccione una opción válida.");
                    System.out.println(" ");
            }
-        } while (resp4 != 7);
+        } while (resp4 != 6);
     }
 }

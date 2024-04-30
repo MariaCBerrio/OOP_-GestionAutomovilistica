@@ -19,6 +19,11 @@ public class VehiculoBase implements Vehiculo {
         if (estadoMovimiento.equals("Apagado")) {
             estadoMovimiento = "Encendido";
             System.out.println("El vehículo de placa " + placa + " ha sido encendido");
+        } else if (velocidadActual > 0 && estadoMovimiento.equals("Encendido")){
+            System.out.println("Frenando vehículo...");
+            estadoMovimiento = "Apagado";
+            velocidadActual = 0;
+            System.out.println("El vehículo de placa " + placa + " ha sido apagado");
         } else {
             estadoMovimiento = "Apagado";
             System.out.println("El vehículo de placa " + placa + " ha sido apagado");
@@ -34,14 +39,6 @@ public class VehiculoBase implements Vehiculo {
                 ", Estado de movimiento = " + estadoMovimiento +
                 '}';
     }
-    @Override
-    public String arrancar() {
-        if (velocidadActual == 0 || estadoMovimiento.equals("Apagado")) {
-            estadoMovimiento = "Encendido";
-            return "El vehículo está arrancando.";
-        }
-        return "El vehículo ya está encendido.";
-    }
 
     @Override
     public String acelerar(float velocidad) {
@@ -51,22 +48,21 @@ public class VehiculoBase implements Vehiculo {
             System.out.println("Acelerando...");
             return "Ahora, el vehiculo de placa " + placa + " va a: " + velocidadActual + " km/h.";
         } else if (estadoMovimiento.equals("Apagado")) {
-            return "El carro está apagado";
+            return "El vehiculo de placa " + placa + " está apagado. No es posible acelerar en este momento.";
         }
-        return "No es posible acelerar en este momento.";
+        return "";
     }
 
     @Override
-    public String frenar() {
-        if (velocidadActual > 0 && estadoMovimiento.equals("Encendido")) {
+    public void frenar() {
+        if (velocidadActual > 0) {
             System.out.println("El vehiculo de placa " + placa + " va a: " + velocidadActual + " km/h");
             velocidadActual = 0;
             System.out.println("Frenando...");
-            return "El vehículo de placa " + placa + " ha frenado.";
+            System.out.println("El vehículo de placa " + placa + " ha frenado.");
         } else if (velocidadActual == 0) {
-            return "El vehículo está detenido";
+            System.out.println("El vehículo está detenido.");
         }
-        return "No es posible frenar en este momento.";
     }
 
     @Override
